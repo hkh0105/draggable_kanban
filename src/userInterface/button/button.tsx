@@ -1,8 +1,5 @@
 import type { FC } from 'react';
-
-type ButtonProps = {
-  label: 'Button' | 'Submit';
-};
+import { ButtonProps } from '@src/types';
 
 const Button: FC<ButtonProps> = ({ label = 'Button' }) => {
   return <button type='button'>{label}</button>;

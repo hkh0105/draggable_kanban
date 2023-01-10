@@ -1,13 +1,8 @@
+import Input from '@src/userInterface/input/input';
 import type { NextPage } from 'next';
-import Button from 'src/features/Button';
 
 const Home: NextPage = () => {
-  return (
-    <h1 className='my-4 text-center text-4xl font-bold'>
-      Home
-      <Button label='Submit' />
-    </h1>
-  );
+  return <Input placeholder='입력해주세요' />;
 };
 
 export default Home;
