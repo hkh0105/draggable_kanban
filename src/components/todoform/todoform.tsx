@@ -5,25 +5,20 @@ import { Todo, TodoListType } from '../../types';
 import Input from '../../userInterface/input/input';
 import { FC } from 'react';
 import { useRecoilState } from 'recoil';
+import useTodo from '@src/hooks/useTodo';
 
 const TodoForm: FC = () => {
   const { value, onChange } = useInput('');
-  const [todo, setTodo] = useRecoilState<TodoListType>(todoState);
+  const { addTodo } = useTodo();
 
-  const addTodoHandler = () => {
-    const tempTodo: Todo = {
-      id: todo.length + 1,
-      title: value,
-      status: 'todo',
-    };
-
-    setTodo([...todo, tempTodo]);
+  const clickAddHandler = () => {
+    addTodo(value);
   };
 
   return (
     <>
       <Input placeholder='todo 제목을 입력해주세요' onChange={onChange} />
-      <Button label='add' onClick={addTodoHandler} />
+      <Button label='add' onClick={clickAddHandler} />
     </>
   );
 };
