@@ -28,7 +28,17 @@ const useTodo = () => {
     setTodo([...tempTodoList]);
   };
 
-  return { addTodo, todo, patchTodo };
+  const putTodo = (editedTodo: Todo) => {
+    const id = editedTodo.id;
+    const tempTodoList = [...todo];
+    const originTodo = tempTodoList.find((todo) => todo.id === id) as Todo;
+    const originIndex = tempTodoList.indexOf(originTodo);
+
+    tempTodoList.splice(originIndex, 1, editedTodo);
+    setTodo([...tempTodoList]);
+  };
+
+  return { addTodo, todo, patchTodo, putTodo };
 };
 
 export default useTodo;
