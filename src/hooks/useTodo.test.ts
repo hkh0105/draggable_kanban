@@ -54,4 +54,27 @@ describe('useTodo Test', () => {
 
     expect(result.current.todo[0].status).toEqual('inProgress');
   });
+
+  test('putTodo function unit test', () => {
+    const { result } = renderHook(() => useTodo(), {
+      wrapper: RecoilRoot,
+    });
+
+    const { todo, putTodo } = result.current;
+
+    expect(todo).toEqual(initailTodo);
+
+    const id = todo[0].id;
+    const tempTodo = {
+      id: id,
+      status: 'completed',
+      content: 'hello world',
+      title: 'Test 123',
+    };
+    act(() => {
+      putTodo(tempTodo);
+    });
+
+    expect(result.current.todo[0].content).toEqual('hello world');
+  });
 });
