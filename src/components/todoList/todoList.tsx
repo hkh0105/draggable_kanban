@@ -12,6 +12,7 @@ import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import DragableBox from '@src/userInterface/dragableBox/dragableBox';
 import useTodo from '@src/hooks/useTodo';
 import DroppableBox from '@src/components/droppableBox/droppableBox';
+import Link from 'next/link';
 
 const TodoList: FC = () => {
   const todoProgressTodoList = useRecoilValue<TodoListType>(normalTodoState);
@@ -39,21 +40,25 @@ const TodoList: FC = () => {
   };
 
   return (
-    <>
+    <div className='flex w-full h-full'>
       {isBrowser && (
         <DragDropContext onDragEnd={dropHandler}>
           {statusList.map((status: TodoStatusType) => (
             <DroppableBox status={status.name} key={uuidv4()}>
               {status.items.map((todo: Todo, index) => (
-                <DragableBox key={uuidv4()} id={todo.id} index={index}>
-                  {todo.title}
-                </DragableBox>
+                <Link href={`/kanban/${todo.id}`}>
+                  <div>
+                    <DragableBox key={uuidv4()} id={todo.id} index={index}>
+                      {todo.title}
+                    </DragableBox>
+                  </div>
+                </Link>
               ))}
             </DroppableBox>
           ))}
         </DragDropContext>
       )}
-    </>
+    </div>
   );
 };
 
