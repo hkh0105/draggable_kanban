@@ -1,11 +1,11 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC, ReactNode } from 'react';
 
-const Box: FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <div className='border-solid border-2 border-slate-500 w-2/3 h-1/5 rounded-md'>
-      {children}
-    </div>
-  );
+import { BoxProps } from '@src/types';
+const Box: FC<BoxProps> = ({ children, className }) => {
+  const basicClassName =
+    'border-solid border-2 border-slate-500 w-2/3 h-1/5 rounded-md ' +
+    className;
+  return <div className={basicClassName}>{children}</div>;
 };
 
 export default Box;
