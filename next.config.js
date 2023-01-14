@@ -12,7 +12,7 @@ const nextConfig = {
   },
   eslint: { dirs: ['src'], ignoreDuringBuilds: true },
   poweredByHeader: false,
-  reactStrictMode: true,
+  // reactStrictMode: true,
   swcMinify: true,
 };
 
