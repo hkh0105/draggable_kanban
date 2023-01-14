@@ -10,7 +10,7 @@ const DroppableBox: FC<DroppableBoxProps> = ({ status, children }) => {
     <Droppable droppableId={status} key={uuidv4()}>
       {(provided) => (
         <>
-          <Box>
+          <Box className='flex-col mx-3 w-1/3 h-1/2 text-center overflow-scroll'>
             <div
               ref={provided.innerRef}
               {...provided.droppableProps}
