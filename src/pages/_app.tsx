@@ -1,5 +1,7 @@
 import '@src/styles/global.css';
 
+import('@src/mocks');
+
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { DefaultSeo } from 'next-seo';
